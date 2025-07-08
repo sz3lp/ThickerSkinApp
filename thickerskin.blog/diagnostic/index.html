@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThickerSkin: Archetype Diagnostic</title>
+    <meta name="description" content="Confront your inner landscape. Reveal your dominant masculine archetype and its shadow.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom CSS Variables for Neo-Brutalist/Cyberpunk Colors */
+        :root {
+            --deep-black: #0B0B0B;
+            --blood-red: #F33A4A;
+            --desaturated-bone: #D6D2CA;
+            --industrial-gray: #333333;
+            --dopamine-blue: #00A6FB;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--deep-black);
+            color: var(--desaturated-bone);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Neo-Brutalist Layout & Elements - Ensuring no border-radius */
+        section, .card, .btn, input, button {
+            border-radius: 0 !important; /* Force no rounded corners */
+        }
+
+        h1, h2, h3, h4, .uppercase-text {
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .font-cinematic-serif {
+            font-family: 'IBM Plex Serif', serif;
+            letter-spacing: 0.05em;
+            line-height: 1.1;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            border: 2px solid transparent;
+            background-color: var(--blood-red);
+            color: var(--deep-black);
+        }
+        .btn:hover:not([disabled]) {
+            background-color: var(--dopamine-blue);
+            box-shadow: 0 0 15px var(--dopamine-blue);
+            color: var(--deep-black);
+        }
+        .btn[disabled] {
+            background-color: var(--industrial-gray);
+            color: rgba(214, 210, 202, 0.5);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .card {
+            background-color: #1A1A1A;
+            border: 1px solid var(--industrial-gray);
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Quiz Specific Styles */
+        .quiz-container {
+            max-width: 800px;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .question-section {
+            display: none; /* Hidden by default, shown by JS */
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-title {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--dopamine-blue);
+            margin-bottom: 2rem;
+        }
+
+        .answer-option {
+            display: block;
+            background-color: var(--industrial-gray);
+            color: var(--desaturated-bone);
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            text-align: left;
+            transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+            border: 1px solid var(--industrial-gray);
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+        }
+
+        .answer-option:hover {
+            background-color: #444444;
+            border-color: var(--dopamine-blue);
+        }
+
+        .answer-option.selected {
+            background-color: var(--blood-red);
+            border-color: var(--blood-red);
+            color: var(--deep-black);
+            font-weight: 700;
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: var(--industrial-gray);
+            height: 8px;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: var(--dopamine-blue);
+            transition: width 0.3s ease-in-out;
+        }
+
+        /* Results Section */
+        #results-section {
+            display: none;
+            animation: fadeIn 0.8s ease-out;
+            margin-top: 4rem;
+        }
+
+        #results-section h2 {
+            color: var(--blood-red);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        #results-section h3 {
+            color: var(--dopamine-blue);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 1rem;
+        }
+
+        #results-section p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .result-detail-card {
+            background-color: #1A1A1A;
+            border: 1px solid var(--industrial-gray);
+            padding: 2rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+        .result-detail-card strong {
+            color: var(--blood-red);
+        }
+
+        .cta-buttons-results {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container mx-auto p-4 md:p-8 max-w-7xl">
+        <header class="text-center my-8">
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4 text-blood-red">
+                Archetype Diagnostic
+            </h1>
+            <p class="text-lg md:text-xl text-desaturated-bone max-w-3xl mx-auto">
+                Confront your inner landscape. This diagnostic will reveal your dominant masculine archetype and its potential shadow, guiding you toward true self-mastery.
+            </p>
+        </header>
+
+        <div class="quiz-container card">
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div id="quiz-questions">
+                <!-- Questions will be dynamically loaded here -->
+            </div>
+
+            <div class="quiz-navigation">
+                <button id="prevBtn" class="btn" disabled>Previous</button>
+                <button id="nextBtn" class="btn">Next</button>
+            </div>
+        </div>
+
+        <div id="results-section" class="quiz-container card">
+            <h2>Your Dominant Archetype: <span id="archetypeResult" class="text-dopamine-blue"></span></h2>
+            <p id="archetypeDescription"></p>
+            
+            <div class="result-detail-card">
+                <h3>Core Qualities:</h3>
+                <p id="archetypeQualities"></p>
+            </div>
+            
+            <div class="result-detail-card mt-4">
+                <h3>Potential Shadow:</h3>
+                <p id="archetypeShadows"></p>
+            </div>
+
+            <div class="result-detail-card mt-4">
+                <h3>Manifestation of Resistance:</h3>
+                <p id="archetypeResistance"></p>
+            </div>
+
+            <div class="cta-buttons-results">
+                <a href="thickerskin.blog/forge" class="btn">Return to The Forge</a>
+                <a href="#" class="btn btn-secondary" id="shareResultBtn">Share Your Archetype</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const quizQuestions = [
+            {
+                question: "When faced with a complex problem, your first instinct is to:",
+                options: [
+                    { text: "Take charge and delegate tasks to ensure a clear path forward.", scores: { King: 2, Warrior: 1 } },
+                    { text: "Analyze all available data, seeking the underlying patterns and hidden truths.", scores: { Magician: 2, King: 1 } },
+                    { text: "Directly confront the challenge head-on, focusing on decisive action and overcoming obstacles.", scores: { Warrior: 2, King: 1 } },
+                    { text: "Connect with others involved, understanding their perspectives and seeking collaborative solutions.", scores: { Lover: 2, Magician: 1 } }
+                ]
+            },
+            {
+                question: "In moments of emotional distress, you tend to:",
+                options: [
+                    { text: "Maintain a composed exterior, believing self-control is paramount.", scores: { King: 1, Warrior: 2 } },
+                    { text: "Withdraw and process internally, avoiding direct emotional expression.", scores: { Magician: 1, Lover: -1 } },
+                    { text: "Channel the energy into a productive task or physical activity.", scores: { Warrior: 2, King: 1 } },
+                    { text: "Seek comfort and understanding through close relationships, though it may be difficult to initiate.", scores: { Lover: 2, Magician: -1 } }
+                ]
+            },
+            {
+                question: "What do you value most in a leader?",
+                options: [
+                    { text: "Their ability to maintain order and provide clear direction.", scores: { King: 2 } },
+                    { text: "Their strategic insight and ability to see beyond the obvious.", scores: { Magician: 2 } },
+                    { text: "Their courage and unwavering resolve in the face of adversity.", scores: { Warrior: 2 } },
+                    { text: "Their capacity for empathy and fostering strong connections within the group.", scores: { Lover: 2 } }
+                ]
+            },
+            {
+                question: "When pursuing a goal, you are most driven by:",
+                options: [
+                    { text: "The desire to build something lasting and impactful.", scores: { King: 2, Warrior: 1 } },
+                    { text: "The pursuit of knowledge and unlocking new possibilities.", scores: { Magician: 2, Lover: 1 } },
+                    { text: "The thrill of the challenge and the satisfaction of overcoming it.", scores: { Warrior: 2, Lover: 1 } },
+                    { text: "The joy of shared experience and deep connection with others.", scores: { Lover: 2, Magician: 1 } }
+                ]
+            },
+            {
+                question: "Your biggest fear is:",
+                options: [
+                    { text: "Losing control or being perceived as weak.", scores: { King: 2, Warrior: 1 } },
+                    { text: "Being exposed as ignorant or losing your intellectual edge.", scores: { Magician: 2 } },
+                    { text: "Failing to meet expectations or showing cowardice.", scores: { Warrior: 2, King: 1 } },
+                    { text: "Emotional isolation or inability to form meaningful bonds.", scores: { Lover: 2 } }
+                ]
+            },
+            {
+                question: "How do you typically react to criticism?",
+                options: [
+                    { text: "I consider it, but ultimately trust my own judgment and authority.", scores: { King: 2 } },
+                    { text: "I analyze it logically to understand its basis, but may become detached.", scores: { Magician: 2 } },
+                    { text: "I may become defensive or aggressive, seeing it as an attack to be countered.", scores: { Warrior: 2 } },
+                    { text: "It can be deeply painful, leading me to withdraw or seek reassurance.", scores: { Lover: 2 } }
+                ]
+            },
+            {
+                question: "When feeling overwhelmed, you are most likely to:",
+                options: [
+                    { text: "Double down on control, trying to impose order on the chaos.", scores: { King: 2 } },
+                    { text: "Disengage mentally, perhaps intellectualizing or avoiding the core issue.", scores: { Magician: 2 } },
+                    { text: "Push through with sheer willpower, even if it means ignoring the emotional toll.", scores: { Warrior: 2 } },
+                    { text: "Seek distraction or comfort, potentially through unhealthy coping mechanisms.", scores: { Lover: 2 } }
+                ]
+            }
+        ];
+
+        const archetypes = {
+            King: {
+                qualities: "Leadership, Order, Generativity, Justice.",
+                shadows: "The Tyrant (abuses power, dominates, lacks compassion) or The Weakling (abdicates responsibility, passive, indecisive).",
+                resistance: "Rigid need for control, fear of appearing weak, resistance to guidance, indecisiveness about therapeutic goals."
+            },
+            Warrior: {
+                qualities: "Strength, Courage, Discipline, Action, Defending the vulnerable.",
+                shadows: "The Sadist (cruelty, violence, domination for its own sake) or The Masochist (turns aggression inward, seeks pain, avoids responsibility).",
+                resistance: "Aggression towards therapist, defensiveness, self-sabotage, avoidance of responsibility for actions, inability to set healthy boundaries."
+            },
+            Magician: {
+                qualities: "Knowledge, Insight, Transformation, Seeing beyond appearances.",
+                shadows: "The Detached Manipulator (uses knowledge for personal gain, exploits others) or The Denying “Innocent” One (refuses power/responsibility, plays victim).",
+                resistance: "Intellectualization, over-analysis, emotional detachment, resistance to exploring unconscious material, playing the victim role, externalizing blame."
+            },
+            Lover: {
+                qualities: "Passion, Creativity, Connection, Intimacy, Embracing life, Joy.",
+                shadows: "The Addicted Lover (compulsive desires, unhealthy relationships) or The Impotent Lover (lost touch with passion/vitality, unable to express love/desire).",
+                resistance: "Avoidance of intimacy, superficial connection, difficulty with emotional expression, resistance to exploring relational patterns, self-neglect, lack of motivation."
+            }
+        };
+
+        let currentQuestionIndex = 0;
+        let userScores = { King: 0, Warrior: 0, Magician: 0, Lover: 0 };
+        let userAnswers = new Array(quizQuestions.length).fill(null);
+
+        const quizQuestionsContainer = document.getElementById('quiz-questions');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progressBar');
+        const resultsSection = document.getElementById('results-section');
+        const archetypeResult = document.getElementById('archetypeResult');
+        const archetypeDescription = document.getElementById('archetypeDescription');
+        const archetypeQualities = document.getElementById('archetypeQualities');
+        const archetypeShadows = document.getElementById('archetypeShadows');
+        const archetypeResistance = document.getElementById('archetypeResistance');
+        const shareResultBtn = document.getElementById('shareResultBtn');
+
+        /**
+         * Renders the current question based on currentQuestionIndex.
+         */
+        function renderQuestion() {
+            quizQuestionsContainer.innerHTML = ''; // Clear previous question
+            const qData = quizQuestions[currentQuestionIndex];
+            const questionElement = document.createElement('div');
+            questionElement.className = 'question-section';
+            questionElement.innerHTML = `
+                <h3 class="question-title">${currentQuestionIndex + 1}. ${qData.question}</h3>
+                <div class="options-container">
+                    ${qData.options.map((option, index) => `
+                        <button class="answer-option" data-option-index="${index}">
+                            ${option.text}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+            quizQuestionsContainer.appendChild(questionElement);
+
+            // Add event listeners to options
+            questionElement.querySelectorAll('.answer-option').forEach(button => {
+                button.addEventListener('click', (event) => selectAnswer(event.target));
+            });
+
+            // Highlight previously selected answer if exists
+            if (userAnswers[currentQuestionIndex] !== null) {
+                const selectedOptionIndex = userAnswers[currentQuestionIndex];
+                questionElement.querySelector(`[data-option-index="${selectedOptionIndex}"]`).classList.add('selected');
+            }
+
+            updateNavigationButtons();
+            updateProgressBar();
+            quizQuestionsContainer.style.display = 'block'; // Show the question
+        }
+
+        /**
+         * Handles selecting an answer option.
+         * @param {HTMLElement} selectedButton - The button element that was clicked.
+         */
+        function selectAnswer(selectedButton) {
+            // Remove 'selected' from all options for the current question
+            selectedButton.closest('.options-container').querySelectorAll('.answer-option').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            // Add 'selected' to the clicked button
+            selectedButton.classList.add('selected');
+
+            const optionIndex = parseInt(selectedButton.dataset.optionIndex); /* Corrected: dataset.optionIndex */
+            userAnswers[currentQuestionIndex] = optionIndex; // Store selected option index
+            updateNavigationButtons(); // Re-evaluate button state
+        }
+
+        /**
+         * Updates the state of the navigation buttons (Previous/Next).
+         */
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.disabled = userAnswers[currentQuestionIndex] === null && currentQuestionIndex < quizQuestions.length - 1;
+            
+            // Change "Next" button text to "See Results" on the last question if an answer is selected
+            if (currentQuestionIndex === quizQuestions.length - 1 && userAnswers[currentQuestionIndex] !== null) {
+                nextBtn.textContent = 'See Results';
+            } else {
+                nextBtn.textContent = 'Next';
+            }
+        }
+
+        /**
+         * Updates the quiz progress bar.
+         */
+        function updateProgressBar() {
+            const progress = ((currentQuestionIndex + (userAnswers[currentQuestionIndex] !== null ? 1 : 0)) / quizQuestions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        /**
+         * Calculates the final archetype scores and displays results.
+         */
+        function calculateResults() {
+            // Reset scores for recalculation
+            userScores = { King: 0, Warrior: 0, Magician: 0, Lover: 0 };
+
+            userAnswers.forEach((answerIndex, qIndex) => {
+                if (answerIndex !== null) {
+                    const selectedOption = quizQuestions[qIndex].options[answerIndex];
+                    for (const archetype in selectedOption.scores) {
+                        userScores[archetype] += selectedOption.scores[archetype];
+                    }
+                }
+            });
+
+            let dominantArchetype = '';
+            let maxScore = -1;
+            for (const archetype in userScores) {
+                if (userScores[archetype] > maxScore) {
+                    maxScore = userScores[archetype];
+                    dominantArchetype = archetype;
+                } else if (userScores[archetype] === maxScore) {
+                    // Handle ties: could pick first, or indicate a blend
+                    // For simplicity, we'll keep the first one found in case of a tie.
+                    // Or, for a more nuanced approach, you could say "You show strong traits of X and Y."
+                }
+            }
+
+            displayResults(dominantArchetype);
+        }
+
+        /**
+         * Displays the results section with the determined archetype.
+         * @param {string} archetypeKey - The key of the dominant archetype.
+         */
+        function displayResults(archetypeKey) {
+            const resultData = archetypes[archetypeKey];
+            if (!resultData) {
+                // Fallback for unexpected results
+                archetypeKey = "Unknown";
+                resultData = {
+                    qualities: "No clear archetype identified.",
+                    shadows: "No specific shadow pattern detected.",
+                    resistance: "No specific resistance pattern identified."
+                };
+            }
+
+            quizQuestionsContainer.style.display = 'none';
+            resultsSection.style.display = 'block';
+
+            archetypeResult.textContent = archetypeKey;
+            archetypeDescription.innerHTML = `You primarily embody the **${archetypeKey}** archetype.`; /* Use innerHTML for bold tag */
+            archetypeQualities.innerHTML = `<strong>${resultData.qualities}</strong>`;
+            archetypeShadows.innerHTML = `<strong>${resultData.shadows}</strong>`;
+            archetypeResistance.innerHTML = `<strong>${resultData.resistance}</strong>`;
+
+            // Share button functionality
+            shareResultBtn.addEventListener('click', () => {
+                const shareText = `I just discovered my dominant archetype is the ${archetypeKey} with ThickerSkin's Archetype Diagnostic! Confront your inner landscape: [Your Quiz URL Here] #ThickerSkin #Archetype #SelfMastery`;
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'ThickerSkin Archetype Diagnostic',
+                        text: shareText,
+                        url: window.location.href
+                    }).catch(error => console.error('Error sharing:', error));
+                } else {
+                    // Fallback for browsers that don't support Web Share API
+                    alert(`Share your archetype!\n\n${shareText}`);
+                }
+            });
+        }
+
+        // --- Navigation Button Event Listeners ---
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (userAnswers[currentQuestionIndex] === null) {
+                // Should be disabled by updateNavigationButtons, but as a safeguard
+                return;
+            }
+
+            if (currentQuestionIndex < quizQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                calculateResults();
+            }
+        });
+
+        // Initial render
+        renderQuestion();
+    </script>
+</body>
+</html>

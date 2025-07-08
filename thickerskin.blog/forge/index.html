@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title SEO Optimization -->
+    <title>Weaponized Loneliness | Drop 001 // ThickerSkin Ritual Relics</title>
+    <!-- Preloading Critical Assets: Hero Image -->
+    <!-- Replace this placeholder with your actual, high-fidelity image asset for optimal emotional impact. -->
+    <link rel="preload" href="https://placehold.co/1920x1080/222222/D6D2CA?text=Male+Subject+Vulnerable+Blurred+Background" as="image">
+    <!-- Tailwind CSS CDN (Note: For production, a locally hosted build is recommended for better performance) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Performance: Added font-display: swap and onload for non-blocking CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" media="all" onload="this.onload=null;this.rel='stylesheet'">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;700&display=swap" rel="stylesheet" media="all" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Font Awesome for icons (Note: For production, subsetting icons or using inline SVGs is recommended for performance) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX'); // Replace with your actual GA4 Measurement ID
+    </script>
+    <style>
+        /* Custom CSS for specific art direction and animations */
+        :root {
+            --deep-black: #0B0B0B;
+            --blood-red: #F33A4A;
+            --desaturated-bone: #D6D2CA;
+            --industrial-gray: #333333;
+            --dopamine-blue: #00A6FB;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif; /* Body copy font */
+            background-color: var(--deep-black);
+            color: var(--desaturated-bone);
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        /* For accessibility: Ensure sufficient color contrast */
+        a, button {
+            /* Example: Ensure contrast for text on background */
+            color: var(--deep-black); /* Text on red buttons */
+            background-color: var(--blood-red);
+        }
+        .text-desaturated-bone {
+            /* Example: Ensure contrast for text on deep-black background */
+            color: var(--desaturated-bone);
+        }
+
+        /* Cinematic Serif for headers/phrases */
+        .font-cinematic-serif {
+            font-family: 'IBM Plex Serif', serif;
+            letter-spacing: 0.05em; /* Tight letter spacing */
+            line-height: 1.1; /* Tight line height */
+        }
+
+        /* Hero section specific styles */
+        .hero-section {
+            background-image: url('https://placehold.co/1920x1080/222222/D6D2CA?text=Male+Subject+Vulnerable+Blurred+Background'); /* Prioritized Hero Image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-headline {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: var(--blood-red);
+            text-shadow: 0 0 15px rgba(243, 58, 74, 0.7);
+            animation: flicker 2s infinite alternate; /* Flicker animation */
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subhead {
+            font-size: clamp(1rem, 3vw, 1.8rem);
+            color: var(--desaturated-bone);
+            margin-bottom: 3rem;
+            line-height: 1.4;
+        }
+
+        .hero-cta-button {
+            background-color: var(--blood-red);
+            color: var(--deep-black);
+            padding: 1rem 2.5rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            display: flex; /* Use flex for icon and text alignment */
+            align-items: center;
+            justify-content: center;
+            width: 100%; /* Full width for mobile */
+            max-width: 300px; /* Max width for desktop */
+            border: 2px solid transparent; /* Initial transparent border for hover effect */
+        }
+
+        .hero-cta-button:hover:not([disabled]) {
+            background-color: var(--desaturated-bone);
+            color: var(--deep-black);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--blood-red); /* Subtle glow on hover */
+            border-color: var(--blood-red); /* Border color change on hover */
+        }
+
+        .hero-cta-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(1) translate(-50%, -50%);
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            z-index: -1;
+        }
+
+        .hero-cta-button:hover:not([disabled])::after {
+            transform: scale(20) translate(-50%, -50%);
+            opacity: 1;
+        }
+
+        /* Locked button styling */
+        .hero-cta-button[disabled] {
+            background-color: var(--industrial-gray);
+            color: rgba(214, 210, 202, 0.5);
+            cursor: not-allowed;
+            opacity: 0.7;
+            /* Ensure pointer-events-none is handled by the wrapper for tooltips */
+        }
+        /* Tooltip specific styling */
+        .tooltip-text {
+            position: absolute;
+            background-color: var(--industrial-gray);
+            color: var(--desaturated-bone);
+            font-size: 0.75rem; /* text-xs */
+            padding: 0.25rem 0.5rem; /* px-2 py-1 */
+            border-radius: 0.125rem; /* rounded-sm */
+            bottom: 100%; /* bottom-full */
+            margin-bottom: 0.5rem; /* mb-2 */
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+            z-index: 10; /* Ensure tooltip is above other content */
+        }
+        .group:hover .tooltip-text {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        /* Flicker animation for text */
+        @keyframes flicker {
+            0%, 19.99%, 22%, 62.99%, 64%, 69.99%, 71%, 100% { opacity: 1; }
+            20%, 21.99%, 63%, 63.99%, 70%, 70.99% { opacity: 0.5; }
+        }
+
+        /* Scroll progress bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background-color: var(--blood-red);
+            width: 0%;
+            z-index: 99;
+        }
+
+        /* Trust Cues Section */
+        .trust-cues-section {
+            background-color: var(--deep-black);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-top: 1px solid var(--industrial-gray);
+            border-bottom: 1px solid var(--industrial-gray);
+            margin-bottom: 4rem; /* Added margin for spacing */
+        }
+        .trust-cues-section h3 {
+            font-size: 0.9rem;
+            color: var(--desaturated-bone);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+        .trust-cues-section .logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .trust-cues-section .logo-item {
+            font-size: clamp(1rem, 4vw, 1.5rem); /* Fallback for text logos */
+            color: var(--industrial-gray); /* Grayscale effect for text */
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .trust-cues-section .logo-item:hover {
+            opacity: 1;
+        }
+        .trust-cues-section img {
+            height: 1.5rem; /* h-6 */
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .trust-cues-section img:hover {
+            opacity: 1;
+        }
+
+        /* Interstitial Narrative Gate */
+        .interstitial-frame {
+            min-height: 50vh; /* Make it visible for pacing */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--deep-black);
+            color: var(--desaturated-bone);
+            font-family: 'IBM Plex Serif', serif;
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            line-height: 1.4;
+            letter-spacing: 0.05em;
+        }
+        .interstitial-frame .scroll-indicator {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            animation: bounce-arrow 1.5s infinite;
+        }
+        @keyframes bounce-arrow {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+
+        /* What Is ThickerSkin section */
+        .thicker-skin-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .thicker-skin-section h2 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: var(--blood-red);
+            margin-bottom: 2rem;
+            font-family: 'IBM Plex Serif', serif;
+        }
+
+        .thicker-skin-section p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            /* Subtle scroll-triggered animation for text */
+            transition: text-shadow 0.8s ease-out, letter-spacing 0.8s ease-out, transform 0.8s ease-out, opacity 0.8s ease-out;
+            transform: translateY(0); /* Initial state */
+            opacity: 0; /* Hidden initially for staggered reveal */
+        }
+
+        .thicker-skin-section p.active { /* Applied when scroll-reveal makes it active */
+            text-shadow: 0 0 8px rgba(214, 210, 202, 0.4);
+            letter-spacing: 0.02em;
+            transform: translateY(-5px); /* Subtle lift */
+            opacity: 1;
+        }
+        /* Staggered delay for paragraphs */
+        .thicker-skin-section p:nth-child(2) { transition-delay: 0.1s; }
+        .thicker-skin-section p:nth-child(3) { transition-delay: 0.2s; }
+        .thicker-skin-section p:nth-child(4) { transition-delay: 0.3s; }
+
+
+        /* CTA Strip below "What Is ThickerSkin?" */
+        .cta-strip {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            padding: 0 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-strip .hero-cta-button { /* Reusing button style */
+            max-width: none; /* Override max-width for strip buttons */
+        }
+
+        /* Modal styles (retained) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 100; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            background-color: var(--industrial-gray);
+            border: 2px solid var(--blood-red);
+            padding: 3rem;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: fadeInScale 0.3s ease-out;
+            border-radius: 0;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close-button {
+            color: var(--desaturated-bone);
+            font-size: 2rem;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-button:hover {
+            color: var(--blood-red);
+        }
+
+        /* Audio waveform for playRitualBtn */
+        .play-ritual-icon-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 1.5em; /* Adjust based on icon size */
+            height: 1.5em; /* Adjust based on icon size */
+            margin-right: 0.5em;
+            overflow: hidden; /* Ensure bars stay within container */
+        }
+
+        .play-ritual-icon-container .fas {
+            position: relative;
+            z-index: 2;
+        }
+
+        .waveform-bar {
+            position: absolute;
+            bottom: 0; /* Align bars to the bottom */
+            width: 3px; /* Width of each bar */
+            background-color: var(--dopamine-blue);
+            transform-origin: bottom;
+            opacity: 0.8;
+            border-radius: 1px;
+        }
+
+        .play-ritual-icon-container.playing .waveform-bar {
+            animation: waveform-animation 1s infinite alternate;
+        }
+
+        .waveform-bar:nth-child(1) { left: 10%; animation-delay: 0s; height: 30%; }
+        .waveform-bar:nth-child(2) { left: 30%; animation-delay: 0.1s; height: 60%; }
+        .waveform-bar:nth-child(3) { left: 50%; animation-delay: 0.2s; height: 40%; }
+        .waveform-bar:nth-child(4) { left: 70%; animation-delay: 0.3s; height: 70%; }
+        .waveform-bar:nth-child(5) { left: 90%; animation-delay: 0.4s; height: 50%; }
+
+        @keyframes waveform-animation {
+            0% { transform: scaleY(0.5); }
+            100% { transform: scaleY(1.2); }
+        }
+
+
+        /* Scroll reveal animation (retained) */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Utility classes for specific colors (retained) */
+        .text-blood-red { color: var(--blood-red); }
+        .bg-deep-black { background-color: var(--deep-black); }
+        .text-desaturated-bone { color: var(--desaturated-bone); }
+        .bg-industrial-gray { background-color: var(--industrial-gray); }
+
+        /* Global Loading Overlay */
+        #globalLoadingOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column; /* Added for text below spinner */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        #globalLoadingOverlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #globalLoadingOverlay .loading-spinner {
+            font-size: 3rem;
+            color: var(--blood-red);
+        }
+
+        /* Exit Intent Modal */
+        #exitIntentModal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1001; /* Higher than other modals */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.95); /* Darker overlay */
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px); /* More blur */
+            animation: fadeInScale 0.3s ease-out;
+        }
+        #exitIntentModal .modal-content {
+            background-color: var(--deep-black); /* Darker background */
+            border: 3px solid var(--blood-red); /* Thicker border */
+            padding: 4rem;
+            max-width: 600px;
+        }
+        #exitIntentModal .modal-content h3 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        #exitIntentModal .modal-content p {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+        }
+        #exitIntentModal .modal-content .hero-cta-button {
+            max-width: 350px; /* Wider button */
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="bg-deep-black text-desaturated-bone">
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Hero Section (Full Viewport) - Stage I: Lure -->
+    <section class="hero-section" id="hero-section">
+        <h1 class="hero-headline font-cinematic-serif">Most men don’t break. They fossilize.</h1>
+        <p class="hero-subhead font-space-grotesk">Confront the fracture. Begin the ritual. Or keep numbing yourself.</p>
+
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6 w-full max-w-xl">
+            <!-- Primary CTA: Diagnostic -->
+            <a href="#" class="hero-cta-button group" id="beginDiagnosticBtn" role="button">
+                <span class="button-text">Reveal Your Archetype</span>
+                <i class="fas fa-spinner fa-spin loading-spinner" style="display: none;"></i>
+            </a>
+        </div>
+        <!-- Microcopy for Primary CTA -->
+        <p class="mt-4 text-sm italic text-desaturated-bone">Takes 90 seconds. Results are irreversible.</p>
+
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6 w-full max-w-xl mt-6"> <!-- Adjusted margin-top -->
+            <!-- Secondary CTA: Locked - Equip Emotional Armor -->
+            <div class="relative group w-full max-w-[300px]">
+                <a href="#" class="hero-cta-button opacity-50 pointer-events-none" id="viewRelicsBtn" role="button" disabled>
+                    <span class="button-text">Equip Emotional Armor</span>
+                    <i class="fas fa-lock ml-2"></i>
+                </a>
+                <span class="tooltip-text">Unlock after diagnostic</span>
+            </div>
+
+            <!-- Secondary CTA: Locked - Trigger the Audio Crucible -->
+            <div class="relative group w-full max-w-[300px]">
+                <a href="#" class="hero-cta-button opacity-50 pointer-events-none" id="playRitualBtn" role="button" disabled>
+                    <span class="play-ritual-icon-container">
+                        <i class="fas fa-play"></i>
+                        <!-- Simulated Waveform Bars -->
+                        <span class="waveform-bar" style="left: 10%;"></span>
+                        <span class="waveform-bar" style="left: 30%;"></span>
+                        <span class="waveform-bar" style="left: 50%;"></span>
+                        <span class="waveform-bar" style="left: 70%;"></span>
+                        <span class="waveform-bar" style="left: 90%;"></span>
+                    </span>
+                    <span id="playRitualText">Trigger the Audio Crucible</span>
+                    <i class="fas fa-lock ml-2"></i>
+                </a>
+                <span class="tooltip-text">Unlock after ritual entry</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Cues Section -->
+    <section class="trust-cues-section scroll-reveal" id="trust-cues-section">
+        <h3>⛓️ FEATURED IN</h3>
+        <div class="logos">
+            <!-- Using img tags as per suggestion -->
+            <img src="https://placehold.co/100x24/0B0B0B/D6D2CA?text=Men's+Health" alt="Men’s Health" class="h-6">
+            <img src="https://placehold.co/100x24/0B0B0B/D6D2CA?text=Substack+100" alt="Substack 100" class="h-6">
+            <img src="https://placehold.co/100x24/0B0B0B/D6D2CA?text=UnHerd" alt="UnHerd" class="h-6">
+            <img src="https://placehold.co/100x24/0B0B0B/D6D2CA?text=Redacted+Podcast" alt="[Redacted] Podcast" class="h-6">
+        </div>
+    </section>
+
+    <!-- Interstitial Narrative Gate -->
+    <section class="text-center py-12 bg-industrial-gray scroll-reveal" id="interstitial-frame">
+      <h2 class="text-desaturated-bone text-xl font-cinematic-serif">Three paths. One fracture.</h2>
+      <p class="text-sm mt-2 text-desaturated-bone opacity-70 scroll-indicator">Scroll to continue ↓</p>
+    </section>
+
+    <!-- Below-the-Fold: One Scroll Max -->
+    <section class="thicker-skin-section scroll-reveal" id="thicker-skin-section">
+        <h2 class="font-cinematic-serif">What Is ThickerSkin?</h2>
+        <p id="thickerSkinP1">You're not here to be entertained. You're here because something cracked.</p>
+        <p id="thickerSkinP2">ThickerSkin is ritual gear for men who are done performing.</p>
+        <p id="thickerSkinP3">This isn’t merch. It’s confrontation, conviction, and emotional reassembly.</p>
+
+        <!-- CTA Strip -->
+        <div class="cta-strip">
+            <a href="#" class="hero-cta-button group" role="button">
+                <span class="button-text">Enter the Ritual</span>
+                <i class="fas fa-spinner fa-spin loading-spinner" style="display: none;"></i>
+            </a>
+            <a href="#" class="hero-cta-button group" role="button">
+                <span class="button-text">Trigger the Sequence</span>
+                <i class="fas fa-spinner fa-spin loading-spinner" style="display: none;"></i>
+            </a>
+            <a href="#" class="hero-cta-button group" role="button">
+                <span class="button-text">Join the Warband</span>
+                <i class="fas fa-spinner fa-spin loading-spinner" style="display: none;"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Modal for "Equip Emotional Armor" (Stage III: Revelation) -->
+    <div id="ritualModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="ritualModalTitle" aria-describedby="ritualModalDesc">
+        <div class="modal-content">
+            <span class="close-button" id="closeModalBtn">&times;</span>
+            <h3 id="ritualModalTitle" class="text-3xl font-bold text-blood-red mb-6 font-cinematic-serif">RITUAL ALIGNMENT</h3>
+            <!-- Updated modal text -->
+            <p id="ritualModalDesc" class="text-lg text-desaturated-bone mb-8">This isn’t shopping. This is alignment. Ready?</p>
+            <button class="bg-blood-red text-deep-black px-8 py-3 font-bold uppercase tracking-widest hover:bg-desaturated-bone transition-colors duration-300" id="modalBeginAlignmentBtn">
+                <span class="button-text">Begin Alignment</span>
+                <i class="fas fa-spinner fa-spin loading-spinner" style="display: none;"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal for "Reveal Your Archetype" -->
+    <div id="diagnosticModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="diagnosticModalTitle" aria-describedby="diagnosticModalDesc">
+        <div class="modal-content">
+            <span class="close-button" id="closeDiagnosticModalBtn">&times;</span>
+            <h3 id="diagnosticModalTitle" class="text-3xl font-bold text-blood-red mb-6 font-cinematic-serif">INITIATE DIAGNOSTIC</h3>
+            <p id="diagnosticModalDesc" class="text-lg text-desaturated-bone mb-8">This diagnostic will guide you to your core fracture. It requires honesty, not performance. Are you ready to confront your inner landscape?</p>
+            <button class="bg-blood-red text-deep-black px-8 py-3 font-bold uppercase tracking-widest hover:bg-desaturated-bone transition-colors duration-300" id="proceedDiagnosticBtn">
+                <span class="button-text">Proceed to Diagnostic</span>
+                <i class="fas fa-spinner fa-spin loading-spinner" style="display: none;"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Exit Intent Modal -->
+    <div id="exitIntentModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="exitIntentModalTitle" aria-describedby="exitIntentModalDesc">
+        <div class="modal-content">
+            <span class="close-button" onclick="document.getElementById('exitIntentModal').style.display='none'">&times;</span>
+            <h3 id="exitIntentModalTitle" class="font-cinematic-serif">THE ACHE DOESN’T LEAVE</h3>
+            <p id="exitIntentModalDesc">You numb. You scroll. You leave. But that ache’s still there.</p>
+            <button class="bg-blood-red text-deep-black px-8 py-3 font-bold uppercase tracking-widest" onclick="window.location.href='/diagnostic'">Begin Diagnostic</button>
+        </div>
+    </div>
+
+    <!-- Global Loading Overlay -->
+    <div id="globalLoadingOverlay">
+        <i class="fas fa-spinner fa-spin loading-spinner"></i>
+        <p class="text-desaturated-bone text-lg mt-4">Initiating...</p>
+    </div>
+
+    <!-- Audio Element (Hidden, controlled by "Trigger the Audio Crucible" button) -->
+    <audio id="ritualAudio" preload="metadata" loop style="display: none;">
+        <!-- Placeholder for audio source. Replace with your actual audio file. -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // --- Global Utilities ---
+        const globalLoadingOverlay = document.getElementById('globalLoadingOverlay');
+
+        /**
+         * Shows the global loading overlay.
+         */
+        function showGlobalLoading() {
+            globalLoadingOverlay.classList.add('show');
+        }
+
+        /**
+         * Hides the global loading overlay.
+         */
+        function hideGlobalLoading() {
+            globalLoadingOverlay.classList.remove('show');
+        }
+
+        /**
+         * Toggles the loading state of a button, showing/hiding spinner and disabling/enabling.
+         * @param {HTMLElement} buttonElement - The button element to modify.
+         * @param {boolean} isLoading - True to show loading state, false to hide.
+         */
+        function toggleButtonLoading(buttonElement, isLoading) {
+            const buttonTextSpan = buttonElement.querySelector('.button-text');
+            const spinnerIcon = buttonElement.querySelector('.loading-spinner');
+            if (buttonTextSpan && spinnerIcon) {
+                if (isLoading) {
+                    buttonTextSpan.style.display = 'none';
+                    spinnerIcon.style.display = 'inline-block';
+                    buttonElement.setAttribute('disabled', 'true');
+                    buttonElement.setAttribute('aria-busy', 'true');
+                    showGlobalLoading();
+                } else {
+                    buttonTextSpan.style.display = 'inline';
+                    spinnerIcon.style.display = 'none';
+                    buttonElement.removeAttribute('disabled');
+                    buttonElement.removeAttribute('aria-busy');
+                    hideGlobalLoading();
+                }
+            }
+        }
+
+        // --- Modal Management ---
+        let lastFocusedElement = null; // To store the element that triggered the modal
+
+        /**
+         * Opens a given modal and manages focus for accessibility.
+         * @param {HTMLElement} modalElement - The modal DOM element.
+         * @param {HTMLElement} triggerElement - The element that triggered the modal opening.
+         */
+        function openModal(modalElement, triggerElement) {
+            lastFocusedElement = triggerElement;
+            modalElement.style.display = 'flex';
+            const firstFocusableElement = modalElement.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (firstFocusableElement) {
+                firstFocusableElement.focus();
+            } else {
+                modalElement.focus(); // Fallback focus
+            }
+        }
+
+        /**
+         * Closes a given modal and returns focus to the triggering element.
+         * @param {HTMLElement} modalElement - The modal DOM element.
+         */
+        function closeModal(modalElement) {
+            modalElement.style.display = 'none';
+            if (lastFocusedElement) {
+                lastFocusedElement.focus();
+                lastFocusedElement = null;
+            }
+        }
+
+        // --- Event Listeners and Initializations ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Scroll Progress Bar ---
+            const scrollProgress = document.getElementById('scroll-progress');
+            const updateScrollProgress = () => {
+                const docHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
+                const scrollPos = window.scrollY;
+                const windowHeight = window.innerHeight;
+                const progress = (scrollPos / (docHeight - windowHeight)) * 100;
+                scrollProgress.style.width = progress + '%';
+            };
+            window.addEventListener('scroll', updateScrollProgress);
+            updateScrollProgress(); // Initial update
+
+            // --- Scroll Reveal Animation and Text Animations ---
+            const scrollElements = document.querySelectorAll('.scroll-reveal');
+            const thickerSkinParagraphs = document.querySelectorAll('.thicker-skin-section p');
+            const sectionInfo = [
+                { id: 'hero-section', name: "// STAGE I: LURE", entryTime: null, duration: 0 },
+                { id: 'trust-cues-section', name: "// STAGE I.V: VALIDATION", entryTime: null, duration: 0 },
+                { id: 'interstitial-frame', name: "// STAGE II: PATHING", entryTime: null, duration: 0 },
+                { id: 'thicker-skin-section', name: "// STAGE III: CONFRONTATION", entryTime: null, duration: 0 }
+            ];
+
+            const formatTime = (seconds) => {
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = Math.floor(seconds % 60);
+                return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+            };
+
+            let currentSectionIndex = -1; // Track the currently active section index
+
+            const updateSectionTimes = () => {
+                const now = Date.now();
+                sectionInfo.forEach((section, index) => {
+                    const sectionElement = document.getElementById(section.id);
+                    if (!sectionElement) return;
+
+                    const rect = sectionElement.getBoundingClientRect();
+                    const isPartiallyInView = (rect.top < window.innerHeight && rect.bottom >= 0);
+
+                    if (isPartiallyInView) {
+                        if (section.entryTime === null) {
+                            section.entryTime = now;
+                        }
+                        if (index === currentSectionIndex) {
+                            section.duration = (now - section.entryTime) / 1000;
+                        }
+                    } else {
+                        if (section.entryTime !== null && index !== currentSectionIndex) {
+                            section.duration = (now - section.entryTime) / 1000;
+                            section.entryTime = null;
+                        }
+                    }
+                });
+            };
+
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    const elementTop = el.getBoundingClientRect().top;
+                    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+                    if (elementTop <= viewportHeight * 0.85) {
+                        el.classList.add('active');
+                    } else {
+                        el.classList.remove('active');
+                    }
+                });
+
+                thickerSkinParagraphs.forEach(p => {
+                    const parentSection = p.closest('.thicker-skin-section');
+                    if (parentSection && parentSection.classList.contains('active')) {
+                        p.classList.add('active');
+                    } else {
+                        p.classList.remove('active');
+                    }
+                });
+
+                let newCurrentSectionIndex = -1;
+                for (let i = 0; i < sectionInfo.length; i++) {
+                    const sectionElement = document.getElementById(sectionInfo[i].id);
+                    if (sectionElement && window.scrollY >= sectionElement.offsetTop - window.innerHeight / 2) {
+                        newCurrentSectionIndex = i;
+                    }
+                }
+
+                if (newCurrentSectionIndex !== currentSectionIndex) {
+                    if (currentSectionIndex !== -1 && sectionInfo[currentSectionIndex].entryTime !== null) {
+                        sectionInfo[currentSectionIndex].duration = (Date.now() - sectionInfo[currentSectionIndex].entryTime) / 1000;
+                        sectionInfo[currentSectionIndex].entryTime = null;
+                    }
+                    currentSectionIndex = newCurrentSectionIndex;
+                    if (currentSectionIndex !== -1) {
+                        sectionInfo[currentSectionIndex].entryTime = Date.now();
+                    }
+                }
+                updateSectionTimes();
+            };
+
+            window.addEventListener('scroll', handleScrollAnimation);
+            handleScrollAnimation();
+            setInterval(updateSectionTimes, 1000);
+
+            // --- Lazy Loading for "What Is ThickerSkin?" section ---
+            const lazyLoadSection = document.getElementById('thicker-skin-section');
+            if (lazyLoadSection) {
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            console.log('ThickerSkin section is in view, loading content...');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { rootMargin: '0px 0px -100px 0px' });
+                observer.observe(lazyLoadSection);
+            }
+
+            // --- Hero CTA Buttons and Modals ---
+            const beginDiagnosticBtn = document.getElementById('beginDiagnosticBtn');
+            const viewRelicsBtn = document.getElementById('viewRelicsBtn');
+            const playRitualBtn = document.getElementById('playRitualBtn');
+            const playRitualIcon = playRitualBtn.querySelector('.fas');
+            const playRitualText = document.getElementById('playRitualText');
+            const playRitualIconContainer = playRitualBtn.querySelector('.play-ritual-icon-container');
+            const ritualAudio = document.getElementById('ritualAudio');
+
+            const ritualModal = document.getElementById('ritualModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const modalBeginAlignmentBtn = document.getElementById('modalBeginAlignmentBtn');
+
+            const diagnosticModal = document.getElementById('diagnosticModal');
+            const closeDiagnosticModalBtn = document.getElementById('closeDiagnosticModalBtn');
+            const proceedDiagnosticBtn = document.getElementById('proceedDiagnosticBtn');
+
+            const exitIntentModal = document.getElementById('exitIntentModal');
+
+            beginDiagnosticBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                openModal(diagnosticModal, beginDiagnosticBtn);
+            });
+
+            viewRelicsBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                openModal(ritualModal, viewRelicsBtn);
+            });
+
+            playRitualBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+                if (ritualAudio.paused) {
+                    ritualAudio.play().catch(e => console.error("Audio play failed:", e));
+                    playRitualIcon.classList.remove('fa-play');
+                    playRitualIcon.classList.add('fa-pause');
+                    playRitualText.textContent = 'Audio Crucible Active...';
+                    playRitualIconContainer.classList.add('playing');
+                } else {
+                    ritualAudio.pause();
+                    playRitualIcon.classList.remove('fa-pause');
+                    playRitualIcon.classList.add('fa-play');
+                    playRitualText.textContent = 'Trigger the Audio Crucible';
+                    playRitualIconContainer.classList.remove('playing');
+                }
+            });
+
+            closeModalBtn.addEventListener('click', () => closeModal(ritualModal));
+            closeDiagnosticModalBtn.addEventListener('click', () => closeModal(diagnosticModal));
+
+            modalBeginAlignmentBtn.addEventListener('click', () => {
+                toggleButtonLoading(modalBeginAlignmentBtn, true);
+                setTimeout(() => {
+                    closeModal(ritualModal);
+                    console.log("Sending user to checkout page with pre-loaded bundle...");
+                    // window.location.href = '/checkout?bundle=true';
+                    toggleButtonLoading(modalBeginAlignmentBtn, false);
+                }, 1000);
+            });
+
+            proceedDiagnosticBtn.addEventListener('click', () => {
+                toggleButtonLoading(proceedDiagnosticBtn, true);
+                setTimeout(() => {
+                    closeModal(diagnosticModal);
+                    console.log("Proceeding to Diagnostic page...");
+                    // window.location.href = '/diagnostic-page';
+                    viewRelicsBtn.removeAttribute('disabled');
+                    playRitualBtn.removeAttribute('disabled');
+                    const viewRelicsTooltip = viewRelicsBtn.closest('.group').querySelector('.tooltip-text');
+                    if (viewRelicsTooltip) viewRelicsTooltip.remove();
+                    const playRitualTooltip = playRitualBtn.closest('.group').querySelector('.tooltip-text');
+                    if (playRitualTooltip) playRitualTooltip.remove();
+                    beginDiagnosticBtn.classList.remove('animate-pulse'); // Stop pulse after diagnostic
+                    toggleButtonLoading(proceedDiagnosticBtn, false);
+                }, 1000);
+            });
+
+            // Universal modal close on outside click
+            window.addEventListener('click', (event) => {
+                if (event.target === ritualModal) closeModal(ritualModal);
+                if (event.target === diagnosticModal) closeModal(diagnosticModal);
+                if (event.target === exitIntentModal) closeModal(exitIntentModal);
+            });
+
+            // Keyboard navigation for modals (Escape key to close)
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    if (window.getComputedStyle(ritualModal).display === 'flex') closeModal(ritualModal);
+                    if (window.getComputedStyle(diagnosticModal).display === 'flex') closeModal(diagnosticModal);
+                    if (window.getComputedStyle(exitIntentModal).display === 'flex') closeModal(exitIntentModal);
+                }
+            });
+
+            // CTA Strip buttons
+            document.querySelectorAll('.cta-strip .hero-cta-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    toggleButtonLoading(button, true);
+                    console.log(`Navigating to: ${button.querySelector('.button-text').textContent}`);
+                    setTimeout(() => {
+                        // Implement specific navigation logic
+                        toggleButtonLoading(button, false);
+                    }, 1000);
+                });
+            });
+
+            // --- Exit Intent Logic ---
+            let exitIntentTriggered = false;
+            document.documentElement.addEventListener('mouseleave', (e) => {
+                if (e.clientY < 0 && !exitIntentTriggered &&
+                    window.getComputedStyle(ritualModal).display === 'none' &&
+                    window.getComputedStyle(diagnosticModal).display === 'none') {
+                    openModal(exitIntentModal, null);
+                    exitIntentTriggered = true;
+                }
+            });
+            window.addEventListener('load', () => { exitIntentTriggered = false; }); // Reset for testing
+
+            // --- Primary CTA Pulse Animation ---
+            let pulseTimeout;
+            const primaryCtaObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (!primaryCta.classList.contains('animate-pulse')) {
+                            pulseTimeout = setTimeout(() => {
+                                primaryCta.classList.add('animate-pulse');
+                            }, 2500); // 2.5 seconds delay
+                        }
+                    } else {
+                        clearTimeout(pulseTimeout);
+                        primaryCta.classList.remove('animate-pulse');
+                    }
+                });
+            }, { threshold: 0.5 });
+            primaryCtaObserver.observe(primaryCta);
+
+            // --- GA4 Scroll-Depth Tracking ---
+            const scrollDepths = [25, 50, 75, 100];
+            const trackedScrollDepths = new Set();
+
+            window.addEventListener('scroll', () => {
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                if (scrollHeight > 0) { // Avoid division by zero on short pages
+                    const scrolledPercentage = (window.scrollY / scrollHeight) * 100;
+                    scrollDepths.forEach(depth => {
+                        if (scrolledPercentage >= depth && !trackedScrollDepths.has(depth)) {
+                            gtag('event', 'scroll_depth', {
+                                'event_category': 'Engagement',
+                                'event_label': `Scrolled ${depth}%`,
+                                'value': depth
+                            });
+                            trackedScrollDepths.add(depth);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
