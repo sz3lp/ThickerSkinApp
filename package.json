@@ -1,0 +1,9 @@
+{
+  "name": "thickerskinapp",
+  "version": "1.0.0",
+  "description": "Static quiz site",
+  "scripts": {
+    "test": "echo 'No tests'"
+  },
+  "type": "module"
+}

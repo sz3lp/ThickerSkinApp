@@ -1,0 +1,10 @@
+[
+  {
+    "question": "How often do you seek new challenges?",
+    "options": ["Rarely", "Sometimes", "Often", "Always"]
+  },
+  {
+    "question": "Do you prefer working in a team?",
+    "options": ["Never", "Occasionally", "Usually", "Always"]
+  }
+]
